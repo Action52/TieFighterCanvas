@@ -7,7 +7,7 @@
 	Last modification date:
 					05/02/2018
 */
-
+import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class Keyboard extends JApplet implements KeyListener, FocusListener, MouseListener{
   //Global variables
   Color tieFighterColor;
-  public static final int WIDTH = 1000;
+  public static final int WIDTH = 1200;
   public static final int HEIGHT = 600;
   public double scaleX = 1;
   public double scaleY = 1;
@@ -68,6 +68,10 @@ public class Keyboard extends JApplet implements KeyListener, FocusListener, Mou
       super.paintComponent(g);
       if(focused){
         g.setColor(Color.black);
+        g.drawString("Rotate: Click 'E' or 'D'", 7, 20);
+        g.drawString("Scale: Click 'R' or 'F'", 7, 35);
+        g.drawString("Move: Press 'Up' key", 7, 50);
+
       }
       else{
         g.setColor(Color.lightGray);
@@ -89,7 +93,8 @@ public class Keyboard extends JApplet implements KeyListener, FocusListener, Mou
       //Print the circles of the tie fighter
       for(int i = 0; i < tieFighter.circles.size(); i++){
         Pixel actual = tieFighter.circles.get(i);
-        //g.drawOval(actual.x, actual.y, (int)(actual.radius*2*scaleX), (int)(actual.radius*2*scaleY));
+        int sum = 10;
+        g.drawOval(actual.x, actual.y, (int)(actual.radius*2*scaleX), (int)(actual.radius*2*scaleY));
       }
       //Print the lines of the tie fighter
       for(int i = 0; i < tieFighter.linesStart.size(); i++){
@@ -184,26 +189,10 @@ public class Keyboard extends JApplet implements KeyListener, FocusListener, Mou
   public void keyPressed(KeyEvent evt){
      int key = evt.getKeyCode();
 
-    if(key == KeyEvent.VK_LEFT){
-      moveInX-=2;
-      tieFighter = new TieFighter(); //Resets tie fighter to adjust coordinates
-      tieFighter.scale(scaleX, scaleY);
-      tieFighter.rotate(degrees);
-      tieFighter.translate(moveInX, moveInY);
-      canvas.repaint();
-    }
-
-    if(key == KeyEvent.VK_RIGHT){
-      moveInX+=2;
-      tieFighter = new TieFighter(); //Resets tie fighter to adjust coordinates
-      tieFighter.scale(scaleX, scaleY);
-      tieFighter.rotate(degrees);
-      tieFighter.translate(moveInX, moveInY);
-      canvas.repaint();
-    }
 
     if(key == KeyEvent.VK_UP){
-      moveInY-=2;
+      moveInX += 2 * Math.cos(Math.toRadians(degrees-270));
+      moveInY += 2 * Math.sin(Math.toRadians(degrees-270));
       tieFighter = new TieFighter(); //Resets tie fighter to adjust coordinates
       tieFighter.scale(scaleX, scaleY);
       tieFighter.rotate(degrees);
@@ -211,14 +200,6 @@ public class Keyboard extends JApplet implements KeyListener, FocusListener, Mou
       canvas.repaint();
     }
 
-    if(key == KeyEvent.VK_DOWN){
-      moveInY+=2;
-      tieFighter = new TieFighter(); //Resets tie fighter to adjust coordinates
-      tieFighter.scale(scaleX, scaleY);
-      tieFighter.rotate(degrees);
-      tieFighter.translate(moveInX, moveInY);
-      canvas.repaint();
-    }
 
   }
 

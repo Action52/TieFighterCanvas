@@ -42,15 +42,6 @@ public class Rotationer{
       newLinesEnd = linesEnd;
     }
 
-    if(!circles.isEmpty()){
-      for(int i = 0; i <circles.size(); i++){
-        int newX = (int)Math.round((double)circles.get(i).x * Math.cos(degreesRadians) - circles.get(i).y * Math.sin(degreesRadians));
-        int newY = (int)Math.round((double)circles.get(i).x * Math.sin(degreesRadians) + circles.get(i).y * Math.cos(degreesRadians));
-        circles.get(i).x = newX;
-        circles.get(i).y = newY;
-      }
-      newCircles = circles;
-    }
   }
 
   public ArrayList<Pixel> getNewLinesStart(){

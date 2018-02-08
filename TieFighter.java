@@ -68,6 +68,8 @@ public class TieFighter{
     setPosition(center[0] - 30, center[1] - 30);
     circles.add(new Pixel(position[0], position[1], 30));
 
+
+
     setPosition(center[0], center[1]); //Volvemos al centro
 
     //Ala izquierda
@@ -168,6 +170,26 @@ public class TieFighter{
     linesEnd.add(new Pixel(position[0] + 20, position[1] - 20, 0));
     linesStart.add(new Pixel(position[0] - 10, position[1] + 10, 0));
     linesEnd.add(new Pixel(position[0] - 20, position[1] + 20, 0));
+
+    //Thrusters
+    linesStart.add(new Pixel(position[0] - 30, position[1] + 20, 0));
+    linesEnd.add(new Pixel(position[0] - 30, position[1] + 40, 0));
+
+    linesStart.add(new Pixel(position[0] + 30, position[1] + 20, 0));
+    linesEnd.add(new Pixel(position[0] + 30, position[1] + 40, 0));
+
+    linesStart.add(new Pixel(position[0] - 30, position[1] + 40, 0));
+    linesEnd.add(new Pixel(position[0] + 30, position[1] + 40, 0));
+
+    linesStart.add(new Pixel(position[0] - 10, position[1] + 40, 0));
+    linesEnd.add(new Pixel(position[0] - 10, position[1] + 50, 0));
+
+    linesStart.add(new Pixel(position[0] + 10, position[1] + 40, 0));
+    linesEnd.add(new Pixel(position[0] + 10, position[1] + 50, 0));
+
+    linesStart.add(new Pixel(position[0] - 10, position[1] + 50, 0));
+    linesEnd.add(new Pixel(position[0] + 10, position[1] + 50, 0));
+
 
   }
 
